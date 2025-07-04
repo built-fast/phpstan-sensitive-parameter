@@ -140,6 +140,38 @@ function modernFunction(string $password): void // @phpstan-ignore-line sensitiv
 }
 ```
 
+### Constructor Parameters
+
+Due to a PHPStan limitation, ignore comments for constructor parameters must
+be placed before the constructor:
+
+```php
+// @phpstan-ignore-next-line sensitiveParameter.missing
+public function __construct(
+    private readonly SomeService $serviceWithSensitiveKeywordInName
+) {}
+```
+
+**Note:** This ignores ALL parameter warnings for that constructor. For
+functions with multiple parameters where only some are false positives,
+consider renaming the problematic parameter to avoid the sensitive keyword
+match.
+
+## Common Issues
+
+### False Positives
+
+The rule uses substring matching, which can occasionally trigger false
+positives:
+
+- `$appInstall` triggers due to "install" containing "pin"
+- `$passwordService` triggers due to containing "password"
+- `$signatureMethod` triggers due to containing "signature"
+
+For these cases, use ignore comments as shown above or consider renaming
+parameters to be more specific (e.g., `$applicationToInstall`, `$authService`,
+`$verificationMethod`).
+
 ## Reporting Issues
 
 Found a bug or have a feature request? Please [report it on GitHub](https://github.com/built-fast/phpstan-sensitive-parameter/issues).
