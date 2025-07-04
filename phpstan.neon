@@ -1,0 +1,11 @@
+parameters:
+    level: 7
+    paths:
+        - src
+    
+    # Ignore test fixtures since they're intentionally problematic
+    excludePaths:
+        - tests/Fixtures/*
+    
+    # PHP version (match your composer.json requirement)
+    phpVersion: 80000

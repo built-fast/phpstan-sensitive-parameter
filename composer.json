@@ -1,11 +1,31 @@
 {
     "name": "built-fast/phpstan-sensitive-parameter",
-    "description": "PHPStan rule to detect potential sensitive parameters",
+    "description": "PHPStan extension for detecting parameters that should use SensitiveParameter",
     "type": "phpstan-extension",
     "license": "MIT",
-    "version": "1.0.0",
+    "homepage": "https://github.com/built-fast/phpstan-sensitive-parameter",
+    "keywords": [
+        "phpstan",
+        "phpstan-extension",
+        "static-analysis",
+        "security",
+        "sensitive-parameter",
+        "php",
+        "code-quality"
+    ],
+    "authors": [
+        {
+            "name": "Josh Priddle",
+            "homepage": "https://github.com/built-fast/phpstan-sensitive-parameter"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/built-fast/phpstan-sensitive-parameter/issues",
+        "forum": "https://github.com/built-fast/phpstan-sensitive-parameter/discussions",
+        "source": "https://github.com/built-fast/phpstan-sensitive-parameter"
+    },
     "require": {
-        "php": "^8.0",
+        "php": "^8.2",
         "phpstan/phpstan": "^2.0"
     },
     "autoload": {
@@ -13,10 +33,15 @@
             "BuiltFast\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "extra": {
         "phpstan": {
             "includes": [
-                "rules.neon"
+                "extension.neon"
             ]
         }
     },
@@ -28,5 +53,7 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
-    }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
